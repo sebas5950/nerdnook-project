@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :favorites
+  resources :comments
+  resources :posts
   
   resources :users, only: [ :create, :show ]
 

@@ -21,7 +21,7 @@ function App() {
       <Navigation currentUser={currentUser} updateUser={updateUser}/>
       <Routes>
         {currentUser ? <Route path="/users/:id" element={<UserProfile updateUser={updateUser}/>} /> : null }
-        <Route path="/" element={<SignUp updateUser={updateUser}/>} />
+        <Route path="/" element={<SignUp />} />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route path="/home" element={<Home />} />
         
