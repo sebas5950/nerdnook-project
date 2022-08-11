@@ -82,7 +82,7 @@ function SignUp() {
       </form>
       {errors
         ? errors.map((error) => (
-            <div>
+            <div key={error.id}>
               {" "}
               {error[0]} {error[1]}{" "}
             </div>
