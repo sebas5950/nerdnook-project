@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :favorites
+  resources :favorites, only: [ :create, :index, :destroy ]
   resources :comments
   resources :posts
   
-  resources :users, only: [ :create, :show ]
+  resources :users, only: [ :create, :show, :update ]
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :image
       t.string :review
       t.string :genre
-      t.belongs_to :user, null: false, foreign_key: true
+      t.integer :author_id
 
       t.timestamps
     end

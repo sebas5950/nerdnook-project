@@ -17,7 +17,14 @@ class UsersController < ApplicationController
         
     end
 
+    def update
+       current_user.update!(user_params)
+       render json: current_user
+    end
+
     private
+
+  
 
 def user_params
     params.permit(:username, :bio, :password, :avatar)

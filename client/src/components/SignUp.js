@@ -50,6 +50,7 @@ function SignUp() {
           name="username"
           value={username}
           onChange={handleChange}
+          placeholder="username"
         />
 
         <label>Password</label>
@@ -58,15 +59,23 @@ function SignUp() {
           name="password"
           value={password}
           onChange={handleChange}
+          placeholder='secret'
         />
         <label>Bio</label>
-        <input type="test" name="bio" value={bio} onChange={handleChange} />
+        <input
+          type="test"
+          placeholder="optional"
+          name="bio"
+          value={bio}
+          onChange={handleChange}
+        />
         <label>Avatar</label>
         <input
           type="text"
           name="avatar"
           value={avatar}
           onChange={handleChange}
+          placeholder="optional"
         />
 
         <input type="submit" value="Sign up!" />

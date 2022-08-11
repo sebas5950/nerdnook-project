@@ -6,6 +6,7 @@ import UserProfile from "./components/UserProfile";
 import Login from './components/Login'
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
+import Posts from "./components/Posts";
 
 function App() {
   
@@ -24,7 +25,7 @@ function App() {
         <Route path="/" element={<SignUp />} />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route path="/home" element={<Home />} />
-        
+        <Route path="/posts" element={<Posts /> } />
       </Routes>
   </div>
   );

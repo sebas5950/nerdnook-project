@@ -15,14 +15,16 @@ function Navigation({ currentUser, updateUser }) {
       {currentUser ? (
         <div>
           <Link to="/home">home</Link>
+          <Link to="/posts">Posts</Link>
           <Link to={`/users/${currentUser.id}`}>Account</Link>
-          <Link onClick={handleLogOut} to={"/"}>
+          <Link onClick={handleLogOut} to="/">
             Log Out
           </Link>
         </div>
       ) : (
         <div>
           <Link to="/home">home</Link>
+          <Link to="/posts">Posts</Link>
           <Link to="/">Sign Up</Link>
           <Link to="/login">Login</Link>
         </div>
