@@ -1,9 +1,9 @@
 
 const PostCard = ({post}) => {
-    
+
     const {title, genre, image, review, comments} = post
     let comment = comments.map((comment) => {
-        return <p>{comment.comment}</p>
+        return <p key={comment.id}>{comment.comment}</p>
     })
     console.log(comment)
     return(
