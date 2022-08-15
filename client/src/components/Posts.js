@@ -13,6 +13,11 @@ const Posts = ({ currentUser }) => {
       .then((data) => setPosts(data));
   }, []);
 
+  const updatePosts = (id) => {
+   const  deletedPosts = posts.filter(post => post.id !== id) 
+    setPosts(deletedPosts)
+  }
+
   function ChangeValue(value) {
     setSearchBar(value);
   }
@@ -24,12 +29,18 @@ const Posts = ({ currentUser }) => {
   return (
     <div>
       <SearchBar onChangeValue={ChangeValue} />
-      <Link to="/createpost">
-        <input placeholder="Create Post" />
-      </Link>
-      {filteredData.map((post) => {
-        return <PostCard post={post} key={post.id} />;
+      <div>
+        <h3>Create Post:</h3>
+        <Link to="/createpost">
+          <input placeholder="Create Post" />
+        </Link>
+      </div>
+    <div className="post-card">
+        {filteredData.map((post) => {
+        return <PostCard post={post} key={post.id} onUpdatePosts={updatePosts}/>;
       })}
+    </div>
+      
     </div>
   );
 };

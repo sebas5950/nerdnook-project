@@ -1,18 +1,30 @@
+import Comments from './Comments'
 
-const PostCard = ({post}) => {
+const PostCard = ({post, onUpdatePosts}) => {
 
-    const {title, genre, image, review, comments} = post
-    let comment = comments.map((comment) => {
-        return <p key={comment.id}>{comment.comment}</p>
+    const {title, genre, image, review, comments, id} = post
+    
+   function handleClick() {
+    fetch(`/posts/${id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
-    console.log(comment)
+    onUpdatePosts(id)
+   }
+
     return(
         <div>
+            <button onClick={handleClick}>Delete</button>
+            <button>Edit</button>
             <h1>{title}</h1>
-            <img src={image} placeholder='Poster' className="poster-image"/>
+            <img src={image} placeholder='Poster' className="poster-image" alt='Poster'/>
             <h3>{genre}</h3>
             <p>{review}</p>
-            {comment}
+            {comments.map(comment => {
+                return <Comments com={comment} key={comment.id}/>
+            })}
         </div>
     )
 }
