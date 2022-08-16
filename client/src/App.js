@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import Posts from "./components/Posts";
 import CreatePost from "./components/CreatePost";
+import EditPost from "./components/EditPost";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
@@ -29,6 +30,7 @@ function App() {
 
         <Route path="/" element={<SignUp />} />
         <Route path="/createpost" element={<CreatePost currentUser={currentUser} />} />
+        <Route path="//posts/:id/editpost" element={<EditPost currentUser={currentUser} />} />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route path="/home" element={<Home />} />
         <Route path="/posts" element={<Posts currentUser={currentUser} />} />

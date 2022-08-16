@@ -1,36 +1,36 @@
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const CreatePost = ({ currentUser }) => {
-  let navigate = useNavigate();
-  
+const EditPost = ({ currentUser }) => {
+  const location = useLocation();
+  const post = location.state;
+  const { title, image, review } = post;
   let startFormData = {
-    title: "",
-    image: "",
-    review: "",
+    title: title,
+    image: image,
+    review: review,
     genre: "Anime",
-    author_id: currentUser.id
+    author_id: currentUser.id,
   };
   const [formData, setFormData] = useState(startFormData);
-  console.log(formData);
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const patchData = {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    };
+    fetch(`/posts/${id}`, patchData);
+    navigate("/posts");
+  }
 
   function handleChange(e) {
     const { value, name } = e.target;
     setFormData({ ...formData, [name]: value });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const postRequest = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    };
-    fetch("/posts", postRequest)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-    setFormData(startFormData);
-    navigate("/posts");
   }
 
   return (
@@ -72,4 +72,4 @@ const CreatePost = ({ currentUser }) => {
   );
 };
 
-export default CreatePost;
+export default EditPost;
