@@ -1,15 +1,26 @@
-import { useState, useEffect } from "react"
-import PostCard from "./PostCard"
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import PostCard from "./PostCard";
 
-const Posts = () => {
+const Posts = ({ currentUser }) => {
+  const [posts, setPosts] = useState([]);
+  const [searchBar, setSearchBar] = useState("");
 
-    const [posts, setPosts] = useState([])
+  useEffect(() => {
+    fetch("/posts")
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }, []);
 
-    useEffect(() =>{
-        fetch("/posts")
-        .then(res => res.json())
-        .then(data => setPosts(data))
-    }, [])
+  const updatePosts = (id) => {
+   const  deletedPosts = posts.filter(post => post.id !== id) 
+    setPosts(deletedPosts)
+  }
+
+  function ChangeValue(value) {
+    setSearchBar(value);
+  }
 
 
     return(
@@ -21,4 +32,28 @@ const Posts = () => {
     )
 }
 
-export default Posts
+  const filteredData = posts.filter((post) => {
+    return post.title.toLowerCase().includes(searchBar.toLowerCase());
+  });
+
+
+  return (
+    <div>
+      <SearchBar onChangeValue={ChangeValue} />
+      <div>
+        <h3>Create Post:</h3>
+        <Link to="/createpost">
+          <input placeholder="Create Post" />
+        </Link>
+      </div>
+    <div className="post-card">
+        {filteredData.map((post) => {
+        return <PostCard post={post} key={post.id} onUpdatePosts={updatePosts}/>;
+      })}
+    </div>
+      
+    </div>
+  );
+
+
+export default Posts;
