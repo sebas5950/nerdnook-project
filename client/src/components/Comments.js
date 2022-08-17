@@ -1,18 +1,24 @@
-const Comments = ({ com }) => {
-    const {comment, id, user_id } = com
+const Comments = ({ com, onUpdateDelete }) => {
+  const { comment, id, user_id } = com;
 
-    const handleDelete = (e) => {
-        console.log(user_id)
-    }
- 
-    return( 
-        <div className="comment-section">
-            <p>
-            {comment}
-            </p>
-            <button onClick={handleDelete}>❌</button>
-        </div>
-    )
-}
+  const handleDelete = (e) => {
+    const deleteComment = {
+      method: "DELETE",
+    };
+    fetch(`/comments/${id}`, deleteComment);
 
-export default Comments
+    onUpdateDelete(id);
+  };
+
+  return (
+    <div className="comment-section">
+      <p>
+        {user_id}
+        {comment}
+      </p>
+      <button onClick={handleDelete}>❌</button>
+    </div>
+  );
+};
+
+export default Comments;
