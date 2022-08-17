@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 const CreatePost = ({ currentUser }) => {
   let navigate = useNavigate();
-  
+
   let startFormData = {
     title: "",
     image: "",
     review: "",
     genre: "Anime",
-    author_id: currentUser.id
+    author_id: currentUser
   };
   const [formData, setFormData] = useState(startFormData);
-  console.log(formData);
 
   function handleChange(e) {
     const { value, name } = e.target;
@@ -26,9 +25,7 @@ const CreatePost = ({ currentUser }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     };
-    fetch("/posts", postRequest)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    fetch("/posts", postRequest);
     setFormData(startFormData);
     navigate("/posts");
   }

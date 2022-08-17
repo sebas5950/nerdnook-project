@@ -14,28 +14,17 @@ const Posts = ({ currentUser }) => {
   }, []);
 
   const updatePosts = (id) => {
-   const  deletedPosts = posts.filter(post => post.id !== id) 
-    setPosts(deletedPosts)
-  }
+    const deletedPosts = posts.filter((post) => post.id !== id);
+    setPosts(deletedPosts);
+  };
 
   function ChangeValue(value) {
     setSearchBar(value);
   }
 
-
-    return(
-        <div>
-         {posts.map((post) => {
-            return <PostCard post={post} key={post.id} />
-         })}
-        </div>
-    )
-}
-
   const filteredData = posts.filter((post) => {
     return post.title.toLowerCase().includes(searchBar.toLowerCase());
   });
-
 
   return (
     <div>
@@ -46,14 +35,19 @@ const Posts = ({ currentUser }) => {
           <input placeholder="Create Post" />
         </Link>
       </div>
-    <div className="post-card">
+      <div className="post-card">
         {filteredData.map((post) => {
-        return <PostCard post={post} key={post.id} onUpdatePosts={updatePosts}/>;
-      })}
-    </div>
-      
+          return (
+            <PostCard
+              post={post}
+              key={post.id}
+              onUpdatePosts={updatePosts}
+              currentUser={currentUser}
+            />
+          );
+        })}
+      </div>
     </div>
   );
-
-
+};
 export default Posts;

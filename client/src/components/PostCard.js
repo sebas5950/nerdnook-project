@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Comments from "./Comments";
-import EditPost from "./EditPost";
+import PostComment from "./PostComment";
 
-const PostCard = ({ post, onUpdatePosts }) => {
+const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   const { title, genre, image, review, comments, id } = post;
+
+  const [newComments, setNewComment] = useState([]);
 
   function handleClick() {
     fetch(`/posts/${id}`, {
@@ -15,10 +18,14 @@ const PostCard = ({ post, onUpdatePosts }) => {
     onUpdatePosts(id);
   }
 
+  function updateComments(data) {
+    console.log(data)
+  }
+
   return (
     <div>
       <button onClick={handleClick}>Delete</button>
-      <Link to={`/posts/${id}/editpost`} state={post} >
+      <Link to={`/posts/${id}/editpost`} state={post}>
         <button>edit</button>
       </Link>
       <h1 className="card-title">{title}</h1>
@@ -33,6 +40,11 @@ const PostCard = ({ post, onUpdatePosts }) => {
       {comments.map((comment) => {
         return <Comments com={comment} key={comment.id} />;
       })}
+      <PostComment
+        postid={id}
+        currentUser={currentUser}
+        onUpdateComments={updateComments}
+      />
     </div>
   );
 };

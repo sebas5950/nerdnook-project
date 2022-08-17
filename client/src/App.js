@@ -12,7 +12,7 @@ import EditPost from "./components/EditPost";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
-
+  let userId = currentUser.id
   const updateUser = (user) => {
     setCurrentUser(user);
   };
@@ -29,11 +29,11 @@ function App() {
         ) : null}
 
         <Route path="/" element={<SignUp />} />
-        <Route path="/createpost" element={<CreatePost currentUser={currentUser} />} />
-        <Route path="//posts/:id/editpost" element={<EditPost currentUser={currentUser} />} />
+        <Route path="/createpost" element={<CreatePost currentUser={userId} />} />
+        <Route path="//posts/:id/editpost" element={<EditPost currentUser={userId} />} />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/posts" element={<Posts currentUser={currentUser} />} />
+        <Route path="/posts" element={<Posts currentUser={userId} />} />
       </Routes>
     </div>
   );
