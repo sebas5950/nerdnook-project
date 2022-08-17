@@ -8,12 +8,12 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        if (current_user == params[:user_id])
+        # if (current_user == params[:user_id])
              @comment.destroy
         head :no_content
-         else
-            render json: {error: "not current user "}
-        end
+        #  else
+        #     render json: {error: "not current user "}
+        # end
     end
 
         def update

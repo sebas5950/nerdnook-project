@@ -10,7 +10,7 @@ const EditPost = ({ currentUser }) => {
     image: image,
     review: review,
     genre: "Anime",
-    author_id: currentUser.id,
+    author_id: currentUser
   };
   const [formData, setFormData] = useState(startFormData);
   const { id } = useParams();

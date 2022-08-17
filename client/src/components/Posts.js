@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PostCard from "./PostCard";
 
+
 const Posts = ({ currentUser }) => {
   const [posts, setPosts] = useState([]);
   const [searchBar, setSearchBar] = useState("");
