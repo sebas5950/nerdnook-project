@@ -6,7 +6,13 @@ const CreateFavorite = ({postid, currentUser}) => {
             user_id: currentUser,
             like: true
         }
-        console.log(favPost)
+        const favoritePost = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(favPost)
+        }
+        fetch('/favorites', favoritePost)
+        .then(console.log('this works now'))
     }
 
     return (

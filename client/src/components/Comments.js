@@ -1,7 +1,7 @@
 const Comments = ({ com, onUpdateDelete }) => {
   const { comment, id, user_id } = com;
 
-  const handleDelete = (e) => {
+  const handleDelete = () => {
     const deleteComment = {
       method: "DELETE",
     };

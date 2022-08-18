@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-    skip_before_action :authenticate_user, only: [:create]
+    skip_before_action :authenticate_user, only: [:create, :index]
 
     def show
         render json: current_user, status: :ok
+    end
+
+    def index
+        render json: current_user, serializer: UserWithFavoriteSerializer
     end
 
     def create

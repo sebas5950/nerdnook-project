@@ -28,7 +28,7 @@ function Login({ updateUser }) {
             if(res.ok){
                 res.json().then(user => {
                     updateUser(user)
-                    navigate(`/users/${user.id}`)
+                    navigate(`/home`)
                 })
             }else {
                 res.json().then(json => setErrors(json.errors))
@@ -42,7 +42,8 @@ function Login({ updateUser }) {
       }
     return (
         <> 
-        <form onSubmit={onSubmit}>
+        <div className='box'>
+                 <form onSubmit={onSubmit}>
         <label>
           Username
           </label>
@@ -57,6 +58,8 @@ function Login({ updateUser }) {
         <input type='submit' value='Log in!'/>
       </form>
       {errors? <div>{errors}</div>:null}
+        </div>
+   
         </>
     )
 }

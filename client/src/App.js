@@ -12,7 +12,12 @@ import EditPost from "./components/EditPost";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
-  let userId = currentUser.id
+  // useEffect(() => {
+  //   fetch("/user")
+  //   .then(res => res.json())
+  //   .then(userData => setCurrentUser(userData))
+  // })
+  let userId = currentUser.id;
   const updateUser = (user) => {
     setCurrentUser(user);
   };
@@ -23,14 +28,20 @@ function App() {
       <Routes>
         {currentUser ? (
           <Route
-            path="/users/:id"
+            path="/user"
             element={<UserProfile updateUser={updateUser} />}
           />
         ) : null}
 
         <Route path="/" element={<SignUp />} />
-        <Route path="/createpost" element={<CreatePost currentUser={userId} />} />
-        <Route path="//posts/:id/editpost" element={<EditPost currentUser={userId} />} />
+        <Route
+          path="/createpost"
+          element={<CreatePost currentUser={userId} />}
+        />
+        <Route
+          path="/posts/:id/editpost"
+          element={<EditPost currentUser={userId} />}
+        />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route path="/home" element={<Home />} />
         <Route path="/posts" element={<Posts currentUser={userId} />} />

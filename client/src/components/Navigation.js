@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navigation({ currentUser, updateUser }) {
@@ -16,7 +16,7 @@ function Navigation({ currentUser, updateUser }) {
         <div>
           <Link to="/home">home</Link>
           <Link to="/posts">Posts</Link>
-          <Link to={`/users/${currentUser.id}`}>Account</Link>
+          <Link to={`/user`}>Account</Link>
           <Link onClick={handleLogOut} to="/">
             Log Out
           </Link>

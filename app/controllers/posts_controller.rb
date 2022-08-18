@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :find_posts, only: [:update, :show, :destroy]
-    skip_before_action :authenticate_user, only: [:index, :show, :create, :destroy, :update]
+    skip_before_action :authenticate_user, only: [:index, :show]
 
 
     def index
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     end
 
     def show
-        render json: @post, serializer: PostWithoutCommentSerializer
+        render json: @post
     end
 
     def create

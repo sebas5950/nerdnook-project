@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
     before_action :find_comment, only: [:destroy, :update]
-    skip_before_action :authenticate_user, only: [:create, :destroy, :update]
 
     def create
         com = Comment.create!(comment_params)
@@ -8,12 +7,12 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        # if (current_user == params[:user_id])
-             @comment.destroy
+        if (current_user.id == @comment.user_id)
+         @comment.destroy
         head :no_content
-        #  else
-        #     render json: {error: "not current user "}
-        # end
+         else
+            render json: {error: "not current user "}
+        end
     end
 
         def update
