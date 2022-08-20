@@ -13,7 +13,7 @@ const Posts = ({ currentUser }) => {
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);
-
+console.log(posts)
   const updatePosts = (id) => {
     const deletedPosts = posts.filter((post) => post.id !== id);
     setPosts(deletedPosts);
@@ -32,9 +32,11 @@ const Posts = ({ currentUser }) => {
       <SearchBar onChangeValue={ChangeValue} />
       <div>
         <h3>Create Post:</h3>
-        <Link to="/createpost">
+        {currentUser ? <Link to="/createpost">
           <input placeholder="Create Post" />
-        </Link>
+        </Link> : <Link to="/">
+          <input placeholder="Create Post" />
+        </Link> }
       </div>
       <div className="post-card">
         {filteredData.map((post) => {

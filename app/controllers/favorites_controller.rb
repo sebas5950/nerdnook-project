@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-    skip_before_action :authenticate_user, only: [:create, :destroy, :index]
+
 
     def index
         render json: Favorite.all, status: :ok

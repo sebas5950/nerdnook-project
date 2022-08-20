@@ -13,6 +13,7 @@ const EditPost = ({ currentUser }) => {
     author_id: currentUser
   };
   const [formData, setFormData] = useState(startFormData);
+  const [errors, setErrors] = useState(null);
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -24,8 +25,16 @@ const EditPost = ({ currentUser }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     };
-    fetch(`/posts/${id}`, patchData);
-    navigate("/posts");
+    fetch(`/posts/${id}`, patchData)
+    .then(res => {
+      if(res.ok) {
+        navigate("/posts");
+      }
+      else{
+        res.json().then((data) =>setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`)));
+      }
+    })
+    
   }
 
   function handleChange(e) {
@@ -34,7 +43,7 @@ const EditPost = ({ currentUser }) => {
   }
 
   return (
-    <div>
+    <div className="form-data">
       <form className="form-data" onSubmit={handleSubmit}>
         <label>Title</label>
         <input
@@ -52,6 +61,7 @@ const EditPost = ({ currentUser }) => {
           value={formData.image}
           placeholder="Image URL"
         />
+        <label>Genre</label>
         <select name="genre" value={formData.genre} onChange={handleChange}>
           <option>Anime</option>
           <option>Comic</option>
@@ -68,6 +78,7 @@ const EditPost = ({ currentUser }) => {
         />
         <input type={"submit"} value="submit" />
       </form>
+      {errors ? errors.map((e) => <div>{e}</div>) : null}
     </div>
   );
 };

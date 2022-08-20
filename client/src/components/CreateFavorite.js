@@ -12,12 +12,19 @@ const CreateFavorite = ({postid, currentUser}) => {
             body: JSON.stringify(favPost)
         }
         fetch('/favorites', favoritePost)
-        .then(console.log('this works now'))
+        .then(res => {
+            if(res.ok){
+                console.log("it works")
+            }
+            else{
+                res.json().then((data) => alert(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`)));
+            }
+        })
     }
 
     return (
         <div>
-           <button onClick={handleFav}>❤️</button>
+          {currentUser ? <button onClick={handleFav}>❤️</button> : <></>}
         </div>
     )
 }

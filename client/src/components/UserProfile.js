@@ -6,6 +6,7 @@ function UserProfile() {
   const [userFav, setUserFav] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
+  const {avatar, bio, username} =user
   const { favorites } = user;
 
   console.log(userFav);
@@ -33,16 +34,20 @@ function UserProfile() {
   if (errors) return <h1>{errors}</h1>;
   return (
     <div>
-      <h1>{`Welcome back ${user.username}`}</h1>
-      <img src={user.avatar} alt="avatar" />
-      <p>{user.bio}</p>
+     
+      <h1>{`Welcome back ${username}`}</h1>
+      <img src={avatar} alt="avatar" />
+      <p>{bio}</p>
       {userFav.map((fav) => {
         return (
-          <UserFavorites
+           <div className="post-card">
+            <UserFavorites
             favorite={fav}
             key={fav.id}
             onUpdateFavorite={updateFavorite}
           />
+           </div>
+          
         );
       })}
     </div>

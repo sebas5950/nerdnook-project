@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navigation from "./components/Navigation";
@@ -12,12 +12,22 @@ import EditPost from "./components/EditPost";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
-  // useEffect(() => {
-  //   fetch("/user")
-  //   .then(res => res.json())
-  //   .then(userData => setCurrentUser(userData))
-  // })
+
+  useEffect(() => {
+    fetch("/me")
+      .then((res) => {
+        if(res.ok){
+          res.json().then(userData => setCurrentUser(userData))
+        }
+        else {
+          res.json().then((json) => console.log(json.errors));
+        }
+      })
+    
+  }, []);
+
   let userId = currentUser.id;
+
   const updateUser = (user) => {
     setCurrentUser(user);
   };
