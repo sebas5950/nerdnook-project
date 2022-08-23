@@ -11,7 +11,10 @@ function Navigation({ currentUser, updateUser }) {
   };
 
   return (
-    <div>
+    <div className="header">
+      <div className="header-first">
+        <img src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png" alt="LOGO"/>
+      </div>
       {currentUser ? (
         <div className="header-middle">
           <Link to="/home">home</Link>
