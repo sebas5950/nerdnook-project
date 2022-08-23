@@ -14,16 +14,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
   useEffect(() => {
-    fetch("/me")
-      .then((res) => {
-        if(res.ok){
-          res.json().then(userData => setCurrentUser(userData))
-        }
-        else {
-          res.json().then((json) => console.log(json.errors));
-        }
-      })
-    
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((userData) => setCurrentUser(userData));
+      } else {
+        res.json().then((json) => console.log(json.errors));
+      }
+    });
   }, []);
 
   let userId = currentUser.id;
@@ -41,9 +38,11 @@ function App() {
             path="/user"
             element={<UserProfile updateUser={updateUser} />}
           />
-        ) : <></>}
+        ) : (
+          <></>
+        )}
 
-        <Route path="/" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/createpost"
           element={<CreatePost currentUser={userId} />}
@@ -53,7 +52,7 @@ function App() {
           element={<EditPost currentUser={userId} />}
         />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts currentUser={userId} />} />
       </Routes>
     </div>
