@@ -20,11 +20,11 @@ const Comments = ({ com, onUpdateDelete, currentUser }) => {
 
 
   return (
-    <div className="comment-section">
-      <p>
+    <div>
+      <span>
         {commentor}
-      </p>
-      <p>{comment}</p>
+      </span>
+      <span>{comment}</span>
       {user_id === currentUser ?<button onClick={handleDelete}>❌</button> : <></>}
     </div>
   );

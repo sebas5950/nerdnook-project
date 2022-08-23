@@ -41,7 +41,7 @@ function App() {
             path="/user"
             element={<UserProfile updateUser={updateUser} />}
           />
-        ) : null}
+        ) : <></>}
 
         <Route path="/" element={<SignUp />} />
         <Route

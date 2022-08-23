@@ -13,7 +13,6 @@ const Posts = ({ currentUser }) => {
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);
-console.log(posts)
   const updatePosts = (id) => {
     const deletedPosts = posts.filter((post) => post.id !== id);
     setPosts(deletedPosts);

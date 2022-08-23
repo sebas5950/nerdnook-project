@@ -9,11 +9,7 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   const { title, genre, image, review, comments, id, author_id } = post;
 
   const [newComments, setNewComment] = useState(comments);
-  const [commentToggle, setCommentToggle] = useState(false)
 
-  function handleToggle(){
-    setCommentToggle(!commentToggle)
-  }
   function handleClick() {
     fetch(`/posts/${id}`, {
       method: "DELETE",
@@ -34,12 +30,13 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   }
 
   return (
-    <div>
+    <div className="individual-cards">
      <CreateFavorite currentUser={currentUser} postid={id} />
       {currentUser === author_id ? <button onClick={handleClick}>Delete</button> : <></>}
       <Link to={`/posts/${id}/editpost`} state={post}>
       {currentUser === author_id ?  <button>Edit</button>: <></>}
       </Link>
+      
       <h1 className="card-title">{title}</h1>
       <img
         src={image}
@@ -52,9 +49,10 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
         {review}
       </ReadMore>
       
-
+    <div  className="comment-section">
       {newComments.map((comment) => {
         return (
+          
           <Comments
             com={comment}
             key={comment.id}
@@ -63,13 +61,12 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
           />
         );
       })}
-      {commentToggle ? <></> :<button onClick={handleToggle}>Comment</button>}
-      {commentToggle ? <PostComment
+      <PostComment
         postid={id}
         currentUser={currentUser}
         onUpdateComments={updateComments}
-      /> : <></>}
-      
+      />
+      </div>
     </div>
 
   );

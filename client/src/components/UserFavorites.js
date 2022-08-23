@@ -1,3 +1,5 @@
+import ReadMore from "./ReadMore";
+
 const UserFavorites = ({ favorite, onUpdateFavorite }) => {
     const { id, favorited_posts } = favorite
 
@@ -17,7 +19,10 @@ const UserFavorites = ({ favorite, onUpdateFavorite }) => {
       
       <img className="poster-image" alt="Poster" src={image} />
       <h4>{genre}</h4>
-      <p>{review}</p> 
+      <ReadMore>
+        {review}
+      </ReadMore>
+       
 
     </div>
   );

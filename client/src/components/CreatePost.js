@@ -33,7 +33,6 @@ const CreatePost = ({ currentUser }) => {
         res.json().then((data) =>setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`)));
       }
     });
-    console.log(errors);
   }
 
   return (

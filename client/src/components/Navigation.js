@@ -13,7 +13,7 @@ function Navigation({ currentUser, updateUser }) {
   return (
     <nav>
       {currentUser ? (
-        <div>
+        <div className="header-middle">
           <Link to="/home">home</Link>
           <Link to="/posts">Posts</Link>
           <Link to={`/user`}>Account</Link>
@@ -22,7 +22,7 @@ function Navigation({ currentUser, updateUser }) {
           </Link>
         </div>
       ) : (
-        <div>
+        <div className="header-middle">
           <Link to="/home">home</Link>
           <Link to="/posts">Posts</Link>
           <Link to="/">Sign Up</Link>

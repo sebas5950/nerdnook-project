@@ -1,16 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
 
-const ReadMore = ({children}) => {
+const ReadMore = ({ children }) => {
+  const [readMoreLess, setReadMoreLess] = useState(false);
 
-    const [readMoreLess, setReadMoreLess] = useState(false)
+  const toggleButton = () => setReadMoreLess(!readMoreLess);
+  console.log(readMoreLess);
+  return (
+    <div>
+      <span>
+        {readMoreLess ? children : `${children.substr(0, 100)}...`}
+        <button className="read-more" onClick={toggleButton}>
+          {readMoreLess ? "Read Less" : "Read More"}
+        </button>
+      </span>
+    </div>
+  );
+};
 
-    return(
-        <div>
-            <p>
-             {children}   
-            </p>
-        </div>
-    )
-}
-
-export default ReadMore
+export default ReadMore;
