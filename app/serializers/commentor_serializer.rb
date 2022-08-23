@@ -1,3 +1,3 @@
 class CommentorSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :avatar
 end

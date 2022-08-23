@@ -43,51 +43,53 @@ function SignUp() {
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <label>Username</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleChange}
-          placeholder="username"
-        />
+      <div className="form-data">
+        <form className="form-data" onSubmit={onSubmit}>
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={handleChange}
+            placeholder="username"
+          />
 
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          placeholder='secret'
-        />
-        <label>Bio</label>
-        <input
-          type="test"
-          placeholder="optional"
-          name="bio"
-          value={bio}
-          onChange={handleChange}
-        />
-        <label>Avatar</label>
-        <input
-          type="text"
-          name="avatar"
-          value={avatar}
-          onChange={handleChange}
-          placeholder="optional"
-        />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            placeholder="secret"
+          />
+          <label>Bio</label>
+          <input
+            type="test"
+            placeholder="optional"
+            name="bio"
+            value={bio}
+            onChange={handleChange}
+          />
+          <label>Avatar</label>
+          <input
+            type="text"
+            name="avatar"
+            value={avatar}
+            onChange={handleChange}
+            placeholder="optional"
+          />
 
-        <input type="submit" value="Sign up!" />
-      </form>
-      {errors
-        ? errors.map((error) => (
-            <div key={error.id}>
-              {" "}
-              {error[0]} {error[1]}{" "}
-            </div>
-          ))
-        : null}
+          <input type="submit" value="Sign up!" />
+        </form>
+        {errors
+          ? errors.map((error) => (
+              <div key={error.id}>
+                {" "}
+                {error[0]} {error[1]}{" "}
+              </div>
+            ))
+          : null}
+      </div>
     </>
   );
 }

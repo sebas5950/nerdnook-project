@@ -3,9 +3,10 @@ import { useState } from "react";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
 import CreateFavorite from "./CreateFavorite";
+import ReadMore from "./ReadMore";
 
 const PostCard = ({ post, onUpdatePosts, currentUser }) => {
-  const { title, genre, image, review, comments, id } = post;
+  const { title, genre, image, review, comments, id, author_id } = post;
 
   const [newComments, setNewComment] = useState(comments);
 
@@ -29,12 +30,13 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   }
 
   return (
-    <div>
-      <CreateFavorite currentUser={currentUser} postid={id} />
-      <button onClick={handleClick}>Delete</button>
+    <div className="individual-cards">
+     <CreateFavorite currentUser={currentUser} postid={id} />
+      {currentUser === author_id ? <button onClick={handleClick}>Delete</button> : <></>}
       <Link to={`/posts/${id}/editpost`} state={post}>
-        <button>edit</button>
+      {currentUser === author_id ?  <button>Edit</button>: <></>}
       </Link>
+      
       <h1 className="card-title">{title}</h1>
       <img
         src={image}
@@ -43,12 +45,18 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
         alt="Poster"
       />
       <h3>{genre}</h3>
-      <p>{review}</p>
+      <ReadMore>
+        {review}
+      </ReadMore>
+      
+    <div  className="comment-section">
       {newComments.map((comment) => {
         return (
+          
           <Comments
             com={comment}
             key={comment.id}
+            currentUser={currentUser}
             onUpdateDelete={updateDelete}
           />
         );
@@ -58,7 +66,9 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
         currentUser={currentUser}
         onUpdateComments={updateComments}
       />
+      </div>
     </div>
+
   );
 };
 

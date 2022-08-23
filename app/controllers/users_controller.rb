@@ -5,6 +5,10 @@ class UsersController < ApplicationController
         render json: current_user, status: :ok
     end
 
+    def index
+        render json: current_user, serializer: UserWithFavoriteSerializer
+    end
+
     def create
         user = User.create(user_params)
         if user.valid?

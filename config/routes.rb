@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :favorites, only: [ :create, :destroy ]
+  resources :favorites, only: [ :create, :destroy, :index]
   resources :comments, only: [:create, :update, :destroy]
   resources :posts
   
@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
+  get "/userfavorites", to: "users#index"
+  get "/me", to: "users#show"
 
   get '*path',
       to: 'fallback#index',

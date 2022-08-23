@@ -9,10 +9,10 @@ const CreatePost = ({ currentUser }) => {
     image: "",
     review: "",
     genre: "Anime",
-    author_id: currentUser
+    author_id: currentUser,
   };
   const [formData, setFormData] = useState(startFormData);
-
+  const [errors, setErrors] = useState(null);
   function handleChange(e) {
     const { value, name } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -25,13 +25,18 @@ const CreatePost = ({ currentUser }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     };
-    fetch("/posts", postRequest);
-    setFormData(startFormData);
-    navigate("/posts");
+    fetch("/posts", postRequest).then((res) => {
+      if (res.ok) {
+        navigate("/posts");
+        setFormData(startFormData);
+      } else {
+        res.json().then((data) =>setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`)));
+      }
+    });
   }
 
   return (
-    <div>
+    <div className="form-data">
       <form className="form-data" onSubmit={handleSubmit}>
         <label>Title</label>
         <input
@@ -49,6 +54,7 @@ const CreatePost = ({ currentUser }) => {
           value={formData.image}
           placeholder="Image URL"
         />
+          <label>Genre</label>
         <select name="genre" value={formData.genre} onChange={handleChange}>
           <option>Anime</option>
           <option>Comic</option>
@@ -65,6 +71,7 @@ const CreatePost = ({ currentUser }) => {
         />
         <input type={"submit"} value="submit" />
       </form>
+      {errors ? errors.map((e) => <div>{e}</div>) : null}
     </div>
   );
 };
