@@ -1,3 +1,4 @@
+import { Avatar } from "@material-ui/core";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -43,7 +44,24 @@ function SignUp() {
   };
   return (
     <>
-      <div className="form-data">
+    <div  className="container" id="container">
+
+    
+    <div className="overlay-container">
+            <div class="overlay-panel overlay-right">
+              <h1>Welcome to NerdNook</h1>
+              <p>
+                Please sign in with the form to the right!
+              </p>
+                <img
+            src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
+            alt="logo"
+          />
+            </div>
+         
+        </div>
+      <div className="login-box">
+        <Avatar />
         <form className="form-data" onSubmit={onSubmit}>
           <label>Username</label>
           <input
@@ -79,16 +97,23 @@ function SignUp() {
             placeholder="optional"
           />
 
-          <input type="submit" value="Sign up!" />
+          <button  type="submit" value="Log in!" className="signup-button">
+            Sign Up!
+          </button>
         </form>
-        {errors
-          ? errors.map((error) => (
-              <div key={error.id}>
-                {" "}
-                {error[0]} {error[1]}{" "}
-              </div>
-            ))
-          : null}
+          {errors
+            ? errors.map((error) => (
+              <div key={error.id} className="login-errors">
+                <h4>
+                  {" "}
+                  {error[0]}
+                  {error[1]}{" "}
+                </h4>
+              </div>  
+              ))
+            : null}
+        
+      </div>
       </div>
     </>
   );

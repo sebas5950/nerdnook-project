@@ -8,7 +8,7 @@ const ReadMore = ({ children }) => {
   return (
     <div>
       <span>
-        {readMoreLess ? children : `${children.substr(0, 100)}...`}
+        {readMoreLess ? children : `${children.substr(0, 250)}...`}
         <button className="read-more" onClick={toggleButton}>
           {readMoreLess ? "Read Less" : "Read More"}
         </button>
