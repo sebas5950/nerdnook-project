@@ -11,9 +11,9 @@ html, body, #root {
  }
 .footer{
   margin-top: auto;
-
+ 
   padding:  3em;
-  background: #2f2d2e;
+  background: #f0f0f0;
 }
 /* header css */
 .header-first img {
@@ -70,58 +70,6 @@ html, body, #root {
 .header-last{
   display: flex;
 }
-/* user css */
-/* .App-user{
-  width: 100%;
-  height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.user-card{
-  width: 300px;
-  height: 480px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0px 1px 10px 1px black;
-  overflow: hidden;
-}
-.upper-container{
-  height: 100px;
-  background: linear-gradient(to left, #2d00f7, #ff0291);
-}
-.image-container img{
-  background: white;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  padding: 5px;
-  transform: translate(95px, 45px);
-}
-.user-image{
-  border: 1.5px solid #8e00b9;
-}
-.lower-container {
-  margin-top: 70px;
-  height: 300px;
-  background: white;
-  text-align: center;
-}
-
-
-.lower-container h3{
-  text-transform: capitalize;
-  color: #2f2d2e;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-.lower-container p{
-  margin: 1rem;
-  font-family: sans-serif;
-  color: #2f2d2e;
-  font-size: 1rem;
-  text-align: justify;
-} */
 /*create formcss */
 .create-box{
   width: 500px;
@@ -606,4 +554,36 @@ height:100%;
 }
 .fav-button .MuiSvgIcon-root{
   color: red;
+}
+
+.home-page{
+  background-image: url('');
+}
+.home-page{
+  width: 100%;
+  height: 100vh;
+}
+video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
 }
