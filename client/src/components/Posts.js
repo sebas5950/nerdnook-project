@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import PostCard from "./PostCard";
 
-
 const Posts = ({ currentUser }) => {
   const [posts, setPosts] = useState([]);
   const [searchBar, setSearchBar] = useState("");
@@ -27,17 +26,26 @@ const Posts = ({ currentUser }) => {
   });
 
   return (
-    <div>
-      <SearchBar onChangeValue={ChangeValue} />
-      <div>
-        <h3>Create Post:</h3>
-        {currentUser ? <Link to="/createpost">
-          <input placeholder="Create Post" />
-        </Link> : <Link to="/">
-          <input placeholder="Create Post" />
-        </Link> }
-      </div>
-      <div className="post-card">
+    <>
+      <div className="posts-wrap">
+        <SearchBar onChangeValue={ChangeValue} />
+        <div className="create-post-wrapper">
+          <h3>CreatePost</h3>
+          {currentUser ? (
+            <div className="route-create">
+              <Link to="/createpost">
+                <input placeholder="Create Post" />
+              </Link>
+            </div>
+          ) : (
+            <div className="route-create">
+              <Link to="/signup">
+                <input placeholder="Create Post" />
+              </Link>{" "}
+            </div>
+          )}
+        </div>
+
         {filteredData.map((post) => {
           return (
             <PostCard
@@ -49,7 +57,7 @@ const Posts = ({ currentUser }) => {
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 export default Posts;

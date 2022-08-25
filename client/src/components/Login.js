@@ -40,27 +40,47 @@ function Login({ updateUser }) {
   };
   return (
     <>
-      <div className="box">
-        <form className="form-data" onSubmit={onSubmit}>
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={handleChange}
+      <div className="container" id="container">
+        <div className="overlay-container">
+            <div class="overlay-panel overlay-right">
+              <h1>Welcome to NerdNook</h1>
+              <p>
+                Please sign in with the form to the right!
+              </p>
+                <img
+            src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
+            alt="logo"
           />
-
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-
-          <input type="submit" value="Log in!" />
-        </form>
-        {errors ? <div>{errors}</div> : null}
+            </div>
+         
+        </div>
+        <div className="login-box login-container">
+          <form className="form-data" onSubmit={onSubmit}>
+            <h1>Login</h1>
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleChange}
+              placeholder='Username'
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder='Password'
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+            <button type="submit" value="Log in!" className="log">
+              Log In!
+            </button>
+          </form>
+          <div className="login-errors">
+            {errors ? <h4>{errors}</h4> : null}
+          </div>
+        </div>
       </div>
     </>
   );

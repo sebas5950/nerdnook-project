@@ -10,7 +10,7 @@ const EditPost = ({ currentUser }) => {
     image: image,
     review: review,
     genre: "Anime",
-    author_id: currentUser
+    author_id: currentUser,
   };
   const [formData, setFormData] = useState(startFormData);
   const [errors, setErrors] = useState(null);
@@ -25,16 +25,17 @@ const EditPost = ({ currentUser }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     };
-    fetch(`/posts/${id}`, patchData)
-    .then(res => {
-      if(res.ok) {
+    fetch(`/posts/${id}`, patchData).then((res) => {
+      if (res.ok) {
         navigate("/posts");
+      } else {
+        res
+          .json()
+          .then((data) =>
+            setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`))
+          );
       }
-      else{
-        res.json().then((data) =>setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`)));
-      }
-    })
-    
+    });
   }
 
   function handleChange(e) {
@@ -43,8 +44,8 @@ const EditPost = ({ currentUser }) => {
   }
 
   return (
-    <div className="form-data">
-      <form className="form-data" onSubmit={handleSubmit}>
+    <div className="create-box">
+      <form className="form-data-create" onSubmit={handleSubmit}>
         <label>Title</label>
         <input
           onChange={handleChange}
@@ -63,20 +64,25 @@ const EditPost = ({ currentUser }) => {
         />
         <label>Genre</label>
         <select name="genre" value={formData.genre} onChange={handleChange}>
-          <option>Anime</option>
-          <option>Comic</option>
-          <option>Manga</option>
-          <option>Movie</option>
+          <option className="option-dropdown">Anime</option>
+          <option className="option-dropdown">Comic</option>
+          <option className="option-dropdown">Manga</option>
+          <option className="option-dropdown">Movie</option>
         </select>
         <label>Review</label>
-        <textarea
-          onChange={handleChange}
-          type={"text"}
-          name="review"
-          value={formData.review}
-          placeholder="Write Review"
-        />
-        <input type={"submit"} value="submit" />
+        <div className="text-area">
+          <textarea
+            onChange={handleChange}
+            type={"text"}
+            name="review"
+            value={formData.review}
+            placeholder="Write Review"
+          />
+        </div>
+
+        <button type="submit" value="Log in!" className="signup-button">
+          Submit
+        </button>
       </form>
       {errors ? errors.map((e) => <div>{e}</div>) : null}
     </div>

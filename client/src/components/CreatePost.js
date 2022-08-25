@@ -30,14 +30,18 @@ const CreatePost = ({ currentUser }) => {
         navigate("/posts");
         setFormData(startFormData);
       } else {
-        res.json().then((data) =>setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`)));
+        res
+          .json()
+          .then((data) =>
+            setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`))
+          );
       }
     });
   }
 
   return (
-    <div className="form-data">
-      <form className="form-data" onSubmit={handleSubmit}>
+    <div className="create-box">
+      <form className="form-data-create" onSubmit={handleSubmit}>
         <label>Title</label>
         <input
           onChange={handleChange}
@@ -54,7 +58,7 @@ const CreatePost = ({ currentUser }) => {
           value={formData.image}
           placeholder="Image URL"
         />
-          <label>Genre</label>
+        <label>Genre</label>
         <select name="genre" value={formData.genre} onChange={handleChange}>
           <option>Anime</option>
           <option>Comic</option>
@@ -62,16 +66,27 @@ const CreatePost = ({ currentUser }) => {
           <option>Movie</option>
         </select>
         <label>Review</label>
-        <textarea
-          onChange={handleChange}
-          type={"text"}
-          name="review"
-          value={formData.review}
-          placeholder="Write Review"
-        />
-        <input type={"submit"} value="submit" />
+        <div className="text-area">
+          <textarea
+            onChange={handleChange}
+            type={"text"}
+            name="review"
+            value={formData.review}
+            placeholder="Write Review"
+          />
+        </div>
+
+        <button type="submit" value="Log in!" className="signup-button">
+          Submit
+        </button>
       </form>
-      {errors ? errors.map((e) => <div>{e}</div>) : null}
+      {errors
+        ? errors.map((e) => (
+            <div className="login-errors">
+              <h4>{e}</h4>
+            </div>
+          ))
+        : null}
     </div>
   );
 };

@@ -4,6 +4,8 @@ import Comments from "./Comments";
 import PostComment from "./PostComment";
 import CreateFavorite from "./CreateFavorite";
 import ReadMore from "./ReadMore";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import EditIcon from "@material-ui/icons/Edit";
 
 const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   const { title, genre, image, review, comments, id, author_id } = post;
@@ -31,44 +33,61 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
 
   return (
     <div className="individual-cards">
-     <CreateFavorite currentUser={currentUser} postid={id} />
-      {currentUser === author_id ? <button onClick={handleClick}>Delete</button> : <></>}
-      <Link to={`/posts/${id}/editpost`} state={post}>
-      {currentUser === author_id ?  <button>Edit</button>: <></>}
-      </Link>
-      
-      <h1 className="card-title">{title}</h1>
-      <img
-        src={image}
-        placeholder="Poster"
-        className="poster-image"
-        alt="Poster"
-      />
-      <h3>{genre}</h3>
-      <ReadMore>
-        {review}
-      </ReadMore>
-      
-    <div  className="comment-section">
-      {newComments.map((comment) => {
-        return (
-          
-          <Comments
-            com={comment}
-            key={comment.id}
-            currentUser={currentUser}
-            onUpdateDelete={updateDelete}
-          />
-        );
-      })}
-      <PostComment
-        postid={id}
-        currentUser={currentUser}
-        onUpdateComments={updateComments}
-      />
+      <div className="post-items">
+        <img
+          src={image}
+          placeholder="Poster"
+          className="poster-image"
+          alt="Poster"
+        />
+        <div className="post-right">
+          <div className="post-top">
+            <h1 className="card-title">{title}</h1>
+            <div className="post-buttons">
+              <CreateFavorite currentUser={currentUser} postid={id} />
+              {currentUser === author_id ? (
+                <button onClick={handleClick} className="delete-button">
+                  {<DeleteForeverIcon fontSize="large" />}
+                </button>
+              ) : (
+                <></>
+              )}
+              <Link to={`/posts/${id}/editpost`} state={post}>
+                {currentUser === author_id ? (
+                  <button className="delete-button">
+                    {<EditIcon fontSize="large" />}
+                  </button>
+                ) : (
+                  <></>
+                )}
+              </Link>
+            </div>
+          </div>
+          <div className="post-text">
+            <h3>{genre}</h3>
+            <ReadMore>{review}</ReadMore>
+          </div>
+        </div>
+      </div>
+
+      <div className="comment-section">
+        {newComments.map((comment) => {
+          return (
+            <Comments
+              com={comment}
+              key={comment.id}
+              currentUser={currentUser}
+              onUpdateDelete={updateDelete}
+            />
+          );
+        })}
+        <PostComment
+          postid={id}
+          currentUser={currentUser}
+          onUpdateComments={updateComments}
+        />
       </div>
     </div>
-
   );
 };
 
