@@ -39,7 +39,7 @@ const PostComment = ({ postid, currentUser, onUpdateComments }) => {
             placeholder="Write a Comment..."
             onChange={(e) => setComment(e.target.value)}
           />
-
+          
           <button type={"submit"} value="Comment" className="comment-button">
             {<ChatBubbleOutlineIcon fontSize="small" />}
           </button>
