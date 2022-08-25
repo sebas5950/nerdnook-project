@@ -1,10 +1,9 @@
 import React from "react";
-
+import SettingsIcon from '@material-ui/icons/Settings';
 function UserCard({ user }) {
   const { avatar, bio, username } = user;
   return (
     <div className="user-card">
-      <div className="upper-container">
         <div className="image-container">
           <img
             className="user-image"
@@ -14,11 +13,12 @@ function UserCard({ user }) {
             alt="avatar"
           />
         </div>
-      </div>
-
-      <div className="lower-container">
-        <h3>{`Welcome back ${username}`}</h3>
-        <p>{bio}</p>
+      <div className="right-user">
+        <div className="username-gear">
+           <h3>{`Welcome back ${username}`}</h3>
+        <button>{<SettingsIcon />}</button>
+        </div>
+        <p className="para">{bio}</p>
       </div>
     </div>
   );

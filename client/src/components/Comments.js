@@ -1,6 +1,9 @@
-const Comments = ({ com, onUpdateDelete, currentUser }) => {
-  const { comment, id, user_id, commentor } = com;
+import { Avatar } from "@material-ui/core";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
+const Comments = ({ com, onUpdateDelete, currentUser }) => {
+  const { comment, id, user_id, commentor, avatar } = com;
+  console.log(com);
   const handleDelete = () => {
     const deleteComment = {
       method: "DELETE",
@@ -18,15 +21,25 @@ const Comments = ({ com, onUpdateDelete, currentUser }) => {
     });
   };
 
-
   return (
-    <div>
-      <span>
-        {commentor}
-      </span>
-      <span>{comment}</span>
-      {user_id === currentUser ?<button onClick={handleDelete}>❌</button> : <></>}
-    </div>
+    <>
+      <div className="main-comments">
+        <Avatar src={avatar} />
+        <div className="comment-button-wrapper">
+          <h4>{commentor}</h4>
+          <div className="comments-plus">
+            <p>{comment}</p>
+            {user_id === currentUser ? (
+              <button onClick={handleDelete} className="comment-delete">
+                {<DeleteForeverIcon fontSize="small" />}
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

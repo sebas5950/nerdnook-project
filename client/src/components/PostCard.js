@@ -71,16 +71,18 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
       </div>
 
       <div className="comment-section">
-        {newComments.map((comment) => {
-          return (
-            <Comments
-              com={comment}
-              key={comment.id}
-              currentUser={currentUser}
-              onUpdateDelete={updateDelete}
-            />
-          );
-        })}
+        <div className="comment-area">
+          {newComments.map((comment) => {
+            return (
+              <Comments
+                com={comment}
+                key={comment.id}
+                currentUser={currentUser}
+                onUpdateDelete={updateDelete}
+              />
+            );
+          })}
+        </div>
         <PostComment
           postid={id}
           currentUser={currentUser}

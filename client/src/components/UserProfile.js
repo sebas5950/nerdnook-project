@@ -35,20 +35,17 @@ function UserProfile() {
     <>
     <div className="App-user">
       <UserCard user={user} key={user.id}/>
-    </div>
       
         {userFav.map((fav) => {
           return (
-            <div className="post-card">
               <UserFavorites
                 favorite={fav}
                 key={fav.id}
                 onUpdateFavorite={updateFavorite}
               />
-            </div>
           );
         })}
-     
+      </div>
     </>
   );
 }
