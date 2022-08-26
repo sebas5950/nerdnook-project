@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Logo from "../assets/Logo.png"
 
 function Login({ updateUser }) {
   const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ function Login({ updateUser }) {
                 Please sign in with the form to the right!
               </p>
                 <img
-            src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
+            src={Logo}
             alt="logo"
           />
             </div>

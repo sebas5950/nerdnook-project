@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/Logo.png"
 import HomeIcon from '@mui/icons-material/Home';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
@@ -20,7 +21,7 @@ function Navigation({ currentUser, updateUser }) {
     <div className="header">
       <div className="header-first">
         <img
-          src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
+          src={Logo}
           alt="LOGO"
         />
       </div>
