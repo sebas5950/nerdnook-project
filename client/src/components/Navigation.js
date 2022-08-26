@@ -1,11 +1,11 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
-import HomeIcon from "@material-ui/icons/Home";
-import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
-import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Avatar } from "@material-ui/core";
-import AddBoxIcon from "@material-ui/icons/AddBox";
+import HomeIcon from '@mui/icons-material/Home';
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Avatar from '@mui/material/Avatar';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 function Navigation({ currentUser, updateUser }) {
   const handleLogOut = () => {

@@ -1,4 +1,6 @@
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';const CreateFavorite = ({ postid, currentUser }) => {
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
+const CreateFavorite = ({ postid, currentUser }) => {
   const handleFav = () => {
     const favPost = {
       post_id: postid,
@@ -26,7 +28,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';const CreateF
   return (
     <div>
       {currentUser ? (
-        <button onClick={handleFav} className='fav-button'>
+        <button onClick={handleFav} className="fav-button">
           <FavoriteBorderIcon fontSize="large" />
         </button>
       ) : (

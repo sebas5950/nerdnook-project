@@ -4,8 +4,8 @@ import Comments from "./Comments";
 import PostComment from "./PostComment";
 import CreateFavorite from "./CreateFavorite";
 import ReadMore from "./ReadMore";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import EditIcon from "@material-ui/icons/Edit";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
 
 const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   const { title, genre, image, review, comments, id, author_id } = post;

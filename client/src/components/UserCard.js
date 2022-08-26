@@ -1,5 +1,5 @@
 import React from "react";
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from '@mui/icons-material/Settings';
 function UserCard({ user }) {
   const { avatar, bio, username } = user;
   return (

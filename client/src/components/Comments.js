@@ -1,6 +1,5 @@
-import { Avatar } from "@material-ui/core";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-
+import Avatar from '@mui/material/Avatar';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const Comments = ({ com, onUpdateDelete, currentUser }) => {
   const { comment, id, user_id, commentor, avatar } = com;
   console.log(com);

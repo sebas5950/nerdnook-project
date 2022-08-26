@@ -1,5 +1,5 @@
 import ReadMore from "./ReadMore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 const UserFavorites = ({ favorite, onUpdateFavorite }) => {
   const { id, favorited_posts } = favorite;
 

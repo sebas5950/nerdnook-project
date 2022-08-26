@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 const PostComment = ({ postid, currentUser, onUpdateComments }) => {
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState(null);

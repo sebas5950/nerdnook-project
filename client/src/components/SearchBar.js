@@ -1,4 +1,4 @@
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from '@mui/icons-material/Search';
 const SearchBar = ({ onChangeValue }) => {
   const handleChange = (e) => {
     onChangeValue(e.target.value);
