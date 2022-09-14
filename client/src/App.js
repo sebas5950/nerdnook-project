@@ -14,6 +14,12 @@ import Footer from "./components/Footer"
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
+  const https = require("https");
+
+setInterval(function() {
+    https.get("https://nerdnook-project.herokuapp.com/");
+}, 300000); // every 5 minutes (300000)
+
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {

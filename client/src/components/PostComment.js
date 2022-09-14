@@ -6,7 +6,7 @@ const PostComment = ({ postid, currentUser, onUpdateComments }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const finalForm = {
+    let finalForm = {
       comment: comment,
       user_id: currentUser,
       post_id: postid,
@@ -18,18 +18,20 @@ const PostComment = ({ postid, currentUser, onUpdateComments }) => {
     };
     fetch("/comments", postComment).then((res) => {
       if (res.ok) {
-        res.json().then((data) => onUpdateComments(data));
-        setComment("");
+        res.json().then((data) => onUpdateComments(data))
+       
       } else {
         res
           .json()
           .then((data) =>
             setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`))
-          );
+          )
       }
-    });
+      
+    })
+    e.target.reset();
   };
-
+console.log(comment)
   return (
     <>
       <div className="comment-input-wrapper">

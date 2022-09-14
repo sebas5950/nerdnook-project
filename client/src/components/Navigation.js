@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.png"
 import HomeIcon from '@mui/icons-material/Home';
@@ -33,7 +32,7 @@ function Navigation({ currentUser, updateUser }) {
                 <HomeIcon fontSize="large" />
               </div>
             }
-          </Link>{" "}
+          </Link>
           <Link to="/posts">
             {
               <div className="header-option">
