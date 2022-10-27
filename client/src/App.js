@@ -9,16 +9,16 @@ import Home from "./components/Home";
 import Posts from "./components/Posts";
 import CreatePost from "./components/CreatePost";
 import EditPost from "./components/EditPost";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
 
   const https = require("https");
 
-setInterval(function() {
+  setInterval(function () {
     https.get("https://nerdnook-project.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
+  }, 300000); // every 5 minutes (300000)
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -62,10 +62,8 @@ setInterval(function() {
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts currentUser={userId} />} />
       </Routes>
-     
-        <Footer />
 
-      
+      <Footer />
     </>
   );
 }
