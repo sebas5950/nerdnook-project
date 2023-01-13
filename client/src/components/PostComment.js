@@ -28,6 +28,7 @@ const PostComment = ({ postid, currentUser, onUpdateComments }) => {
           );
       }
     });
+    e.target.reset()
   };
 
   return (
