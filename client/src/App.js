@@ -32,7 +32,8 @@ function App() {
 
   return (
     <>
-      <Navigation currentUser={currentUser} updateUser={updateUser} />
+    <div>
+       <Navigation currentUser={currentUser} updateUser={updateUser} />
       <Routes>
         {currentUser ? (
           <Route
@@ -59,6 +60,8 @@ function App() {
      
         <Footer />
 
+    </div>
+     
       
     </>
   );
