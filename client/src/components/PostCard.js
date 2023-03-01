@@ -32,12 +32,13 @@ const PostCard = ({ post, onUpdatePosts, currentUser }) => {
   }
 
   return (
-    <div className="individual-cards">
+    <div className="individual-cards" >
       <div className="post-items">
         <img
           src={image}
           placeholder="Poster"
           className="poster-image"
+          
           alt="Poster"
         />
         <div className="post-right">

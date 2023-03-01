@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Posts from "./components/Posts";
 import CreatePost from "./components/CreatePost";
 import EditPost from "./components/EditPost";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
@@ -56,10 +56,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts currentUser={userId} />} />
       </Routes>
-     
-        <Footer />
 
-      
+      <Footer />
     </>
   );
 }

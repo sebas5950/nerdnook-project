@@ -6,6 +6,7 @@ import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Avatar } from "@material-ui/core";
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import Icon from "../assets/Nerdnook.png"
 
 function Navigation({ currentUser, updateUser }) {
   const handleLogOut = () => {
@@ -20,7 +21,7 @@ function Navigation({ currentUser, updateUser }) {
     <div className="header">
       <div className="header-first">
         <img
-          src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
+          src={Icon}
           alt="LOGO"
         />
       </div>

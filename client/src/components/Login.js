@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Icon from "../assets/Nerdnook.png"
 
 function Login({ updateUser }) {
   const [formData, setFormData] = useState({
@@ -42,17 +43,14 @@ function Login({ updateUser }) {
     <>
       <div className="container" id="container">
         <div className="overlay-container">
-            <div class="overlay-panel overlay-right">
-              <h1>Welcome to NerdNook</h1>
-              <p>
-                Please sign in with the form to the right!
-              </p>
-                <img
-            src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
-            alt="logo"
-          />
-            </div>
-         
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome to NerdNook</h1>
+            <p>Please sign in with the form to the right!</p>
+            <img
+              src={Icon}
+              alt="logo"
+            />
+          </div>
         </div>
         <div className="login-box login-container">
           <form className="form-data" onSubmit={onSubmit}>
@@ -63,12 +61,12 @@ function Login({ updateUser }) {
               name="username"
               value={username}
               onChange={handleChange}
-              placeholder='Username'
+              placeholder="Username"
             />
             <label>Password</label>
             <input
               type="password"
-              placeholder='Password'
+              placeholder="Password"
               name="password"
               value={password}
               onChange={handleChange}
@@ -76,10 +74,10 @@ function Login({ updateUser }) {
             <button type="submit" value="Log in!" className="log">
               Log In!
             </button>
+            {errors ? <h4 className="errors">{errors}</h4> : null}
           </form>
-          <div className="login-errors">
-            {errors ? <h4>{errors}</h4> : null}
-          </div>
+
+
         </div>
       </div>
     </>
