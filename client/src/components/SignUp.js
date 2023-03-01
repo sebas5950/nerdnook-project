@@ -1,6 +1,7 @@
 import { Avatar } from "@material-ui/core";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Icon from "../assets/Nerdnook.png";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -37,7 +38,6 @@ function SignUp() {
       }
     });
   }
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -54,15 +54,15 @@ function SignUp() {
                 Please sign in with the form to the right!
               </p>
                 <img
-            src="https://cdn.discordapp.com/attachments/975808758880018463/1011674130824822815/Group_1.png"
+            src={Icon}
             alt="logo"
           />
             </div>
          
         </div>
       <div className="login-box">
-        <Avatar />
         <form className="form-data" onSubmit={onSubmit}>
+        <Avatar />
           <label>Username</label>
           <input
             type="text"
@@ -100,19 +100,17 @@ function SignUp() {
           <button  type="submit" value="Log in!" className="signup-button">
             Sign Up!
           </button>
-        </form>
           {errors
             ? errors.map((error) => (
               <div key={error.id} className="login-errors">
                 <h4>
                   {" "}
-                  {error[0]}
                   {error[1]}{" "}
                 </h4>
               </div>  
               ))
             : null}
-        
+        </form>        
       </div>
       </div>
     </>

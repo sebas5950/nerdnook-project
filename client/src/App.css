@@ -1,33 +1,20 @@
 /* body and footer css */
 html,
-body,
-#root {
+body{
+  margin: 0;
+}
+#root{
   height: 100vh;
   width: 100vw;
   margin: 0;
 }
-
-@media (max-width: 600px) {
-  html,
-  body,
-  #root {
-    height: auto;
-    width: 100%;
-  }
+* {
+  box-sizing: border-box;
 }
 
-/* #root {
-  display: flex;
-  flex-direction: column;
-} */
 /* footer */
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-top: auto;
   padding: 0.5em;
   background: #f0f0f0;
   display: flex;
@@ -62,7 +49,7 @@ body,
   }
 /* header css */
 .header-first img {
-  height: 80px;
+  height: 90px;
 }
 
 @media (max-width: 600px) {
@@ -77,11 +64,10 @@ body,
   display: flex;
   padding: 15px 50px;
   justify-content: space-between;
-  /* flex-wrap: wrap; */
   position: sticky;
   background-color: #f0f0f0;
-  z-index: 100;
-  top: 0;
+  z-index: 300;
+  top: 0px;
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
 }
 @media only screen and (max-width: 768px) {
@@ -183,24 +169,37 @@ body,
   }
 }
 /*create formcss */
+.create-box-wrapper{
+  background-color: #e3d9ea;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 .create-box {
-  width: 500px;
-  height: 600px;
+  width: auto;
+  height: auto;
+  padding: 50px;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: rgb(238, 236, 236);
   border-radius: 10px;
-  row-gap: 10px;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: auto;
+  gap: 30px;
+  justify-content: center;
+  /* align-items: center; */
   box-shadow: 0px 0px 10px 0px black;
 }
 .form-data-create {
   display: flex;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
   align-items: center;
+  max-width: auto;
+  overflow: visible;
+  gap: 25px;
   flex-direction: column;
-  row-gap: 10px;
 }
 .form-data-create input {
   border-radius: 5px;
@@ -215,11 +214,7 @@ body,
 
 @media (max-width: 600px) {
   .create-box {
-    width: 80%;
-    height: auto;
-  }
-  .form-data-create input {
-    width: 80%;
+   width: auto;
   }
 }
 .form-data-create select {
@@ -256,10 +251,10 @@ body,
 
 @media (max-width: 600px) {
   .form-data-create select {
-    width: 80%;
+    width: 100%;
   }
   .text-area textarea {
-    width: 80%;
+    width: 100%;
   }
 }
 
@@ -275,13 +270,10 @@ body,
 /* login signup form */
 
 .container {
-  background-color: #fff;
-  position: relative;
-  overflow: hidden;
   display: flex;
-  justify-content: center;
-  width: auto;
+  flex-wrap: wrap; 
   height: 100%;
+  width: auto;
 }
 .overlay-container {
   background-color: #9e8d91;
@@ -303,13 +295,23 @@ body,
   width: 50%;
 }
 
-@media (max-width: 600px) {
-  .overlay-panel {
-    width: 80%;
+@media (max-width: 870px) {
+  .overlay-container{
+    display: none;
   }
+  .form-data{
+    box-shadow: 0px 0px 10px 0px rgb(105, 98, 197);
+    padding: 50px;
+    border-radius: 10px;
+  }
+
+}
+.errors{
+  color: red;
 }
 .login-wrapper {
   display: flex;
+  
   justify-content: space-between;
 }
 
@@ -317,7 +319,7 @@ body,
   display: flex;
   align-items: center;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 40px;
 }
 .login-box {
   flex: 1;
@@ -379,7 +381,7 @@ body,
   background-color: rgba(104, 85, 224, 1);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .form-data .log,
   .signup-button {
     width: 80%;
@@ -391,7 +393,7 @@ body,
   width: auto;
 }
 .login-errors {
-  color: red;
+  color: rgb(239, 30, 30);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -558,6 +560,7 @@ body,
 }
 .post-right {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
 }
@@ -594,11 +597,10 @@ body,
 .comment-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-.comment-form {
+.comment-input-wrapper {
   background: #ebe8e8;
   display: flex;
   margin-bottom: 30px;
@@ -607,6 +609,20 @@ body,
   margin-top: 30px;
   border-radius: 30px;
   opacity: 8.5;
+}
+@media screen and (max-width: 800px) {
+  .comment-input-wrapper {
+    flex-wrap: wrap;
+    max-width: 70%;
+  }
+}
+
+/* For screens wider than 768px */
+@media screen and (min-width: 799px) {
+  .comment-input-wrapper {
+    /* background-color: #064772; */
+    max-width: 80%;
+  }
 }
 .comment-input-wrapper input {
   background-color: transparent;
@@ -637,9 +653,8 @@ body,
 .comment-area {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   max-height: 150px;
-  max-width: 800px;
   overflow-y: scroll;
   margin-top: 30px;
   border-radius: 10px;
@@ -658,7 +673,6 @@ body,
 }
 .main-comments {
   display: flex;
-
   align-items: center;
   padding: 10px 40px;
 }
@@ -670,7 +684,7 @@ body,
   padding-left: 10px;
   column-gap: 1em;
   align-items: center;
-  height: 40px;
+  height: 50px;
 }
 .comment-button-wrapper h4 {
   color: #2f0c5b;
@@ -702,10 +716,18 @@ body,
 }
 .user-card {
   display: flex;
+  flex-wrap: wrap;
   column-gap: 2em;
+  max-width: 100%;
   align-items: center;
   padding: 50px 100px;
 }
+@media screen and (max-width: 750px) {
+  .user-card{
+    width: 100%;
+  }
+}
+
 .image-container img {
   border-radius: 99px;
   width: 150px;
