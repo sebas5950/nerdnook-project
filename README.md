@@ -16,6 +16,7 @@ npm start
 ```
 This will start a local development server at http://localhost:3000/.
 #Screenshots
+![image]("![Posts](https://user-images.githubusercontent.com/68822252/232178729-2c6022f7-232f-4d8d-8c99-20fce0e3ca81.PNG)")
 # Features
 NerdNook is built using the following technologies:
 ### Front-end
