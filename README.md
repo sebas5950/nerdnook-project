@@ -15,6 +15,7 @@ rails s
 npm start
 ```
 This will start a local development server at http://localhost:3000/.
+#Screenshots
 # Features
 NerdNook is built using the following technologies:
 ### Front-end
