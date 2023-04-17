@@ -41,7 +41,7 @@ NerdNook is built using the following technologies:
 * React Router - routing library for React
 * Async - HTTP client for making API requests
 * Material.UI - front-end framework for styling and layout
-###Back-End
+### Back-End
 * Ruby on Rails - web application framework for Ruby
 * PostgreSQL - open source relational database
 * Active Record - Object-Relational Mapping (ORM) for interacting with the database
