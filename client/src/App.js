@@ -53,7 +53,7 @@ function App() {
           element={<EditPost currentUser={userId} />}
         />
         <Route path="/login" element={<Login updateUser={updateUser} />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home currentUser={currentUser}/>} />
         <Route path="/posts" element={<Posts currentUser={userId} />} />
       </Routes>
 

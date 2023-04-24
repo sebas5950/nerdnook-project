@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
 
 
     def index
-        render json: Favorite.all, status: :ok
+        render json: Favorite.all.order(created_at: :desc), status: :ok
     end
 
     def create
