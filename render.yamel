@@ -1,0 +1,19 @@
+databases:
+  - name: nerdnook_project
+    databaseName: nerdnook_project
+    user: nerdnook_project
+
+services:
+  - type: web
+    name: nerdnook_project
+    env: ruby
+    repo: https://github.com/sebas5950/nerdnook-project
+    buildCommand: "./bin/nerdnook-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nerdnook_project
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
