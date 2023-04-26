@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: nerdnook_project_production
   username: nerdnook_project
   password: <%= ENV["NERDNOOK_PROJECT_DATABASE_PASSWORD"] %>
