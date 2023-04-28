@@ -25,7 +25,6 @@ function App() {
   }, []);
 
   let userId = currentUser.id;
-  console.log(currentUser)
 
   const updateUser = (user) => {
     setCurrentUser(user);
